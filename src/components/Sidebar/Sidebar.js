@@ -5,9 +5,12 @@ import { Create } from '@mui/icons-material';
 import SidebarOption from '../SidebarOption/SidebarOption';
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from '../../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth} from '../../firebase';
 
 function Sidebar() {
-    const [channels, loading, error] = useCollection(db.collection("rooms"));
+    const [channels] = useCollection(db.collection("rooms"));
+    const [user] = useAuthState(auth);
 
     return (
         <SidebarContainer>
@@ -17,7 +20,7 @@ function Sidebar() {
                     <h2> Slack it</h2>
                     <h3>
                         <FiberManualRecord />
-                        Dawid Brzeski
+                       {user.displayName}
                     </h3>
 
                 </SidebarInfo>
