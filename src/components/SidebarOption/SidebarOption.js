@@ -2,7 +2,9 @@ import React from 'react';
 import styled from "styled-components";
 import { db } from '../../firebase';
 
-function SidebarOption({Icon, title, addChannelOption}) {
+
+function SidebarOption({ Icon, title, addChannelOption }) {
+    
 
     const addChannel = () => {
         const channelName = prompt("Please enter the channel name");
@@ -14,20 +16,20 @@ function SidebarOption({Icon, title, addChannelOption}) {
         }
     };
 
-    const selectChannel = () => {}; 
+    const selectChannel = () => { };
 
     return (
         <SidebarOptionContainer
             onClick={addChannelOption ? addChannel : selectChannel}
         >
-          {Icon && <Icon fontSize="small" style={{padding: 10}}/>}
-          {Icon ? (
-              <h3>{title}</h3>
-          ) : (
-              <SidebarOptionChannel>
-                  <span>#</span> {title}
-              </SidebarOptionChannel>
-          )}
+            {Icon && <Icon fontSize="small" style={{ padding: 10 }} />}
+            {Icon ? (
+                <h3>{title}</h3>
+            ) : (
+                <SidebarOptionChannel>
+                    <span>#</span> {title}
+                </SidebarOptionChannel>
+            )}
         </SidebarOptionContainer>
 
     );

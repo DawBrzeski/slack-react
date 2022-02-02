@@ -3,8 +3,12 @@ import styled from "styled-components"
 import { Add, Apps, BookmarkBorder, Drafts, ExpandLess, ExpandMore, FiberManualRecord, FileCopy, Inbox, InsertComment, PeopleAlt } from '@mui/icons-material';
 import { Create } from '@mui/icons-material';
 import SidebarOption from '../SidebarOption/SidebarOption';
+import { useCollection } from "react-firebase-hooks/firestore";
+import { db } from '../../firebase';
 
 function Sidebar() {
+    const [channels, loading, error] = useCollection(db.collection("rooms"));
+
     return (
         <SidebarContainer>
             <SidebarHeader>
@@ -33,7 +37,12 @@ function Sidebar() {
             <SidebarOption Icon={ExpandMore} title="Channels" />
             <hr />
             <SidebarOption Icon={Add} addChannelOption title="Add Channel" />
-
+            {channels?.docs.map(doc => (
+                <SidebarOption 
+                key={doc.id}
+                id={doc.id}
+                 title={doc.data().name} />
+            ))}
         </SidebarContainer>
 
     )
