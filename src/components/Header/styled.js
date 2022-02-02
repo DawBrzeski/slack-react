@@ -1,39 +1,19 @@
-import React from 'react';
 import styled from "styled-components";
 import { Avatar } from "@mui/material";
 import { AccessTime } from '@mui/icons-material';
-import { Search as SearchIcon } from '@mui/icons-material';
-import { HelpOutline as HelpMark } from '@mui/icons-material';
 
-function Header() {
-  return (
-    <HeaderContainer>
+export const HeaderRight = styled.div`
+flex: 0.3;
+display: flex; 
+align-items: flex-end;
 
-      <HeaderLeft>
-        <HeaderAvatar />
-        <HeaderTimeIcon />
-      </HeaderLeft>
-
-      <HeaderSearch>
-        <SearchIcon/>
-        <input placeholder="Search" />
-      </HeaderSearch>
-
-      <HeaderRight>
-      <HelpMark/>
-      </HeaderRight>
-
-    </HeaderContainer>
-  )
+> .MuiSvgIcon-root {
+  margin-left: auto;
+  margin-right: 20px; 
 }
-
-export default Header;
-
-const HeaderRight = styled.div`
-
 `;
 
-const HeaderSearch = styled.div`
+export const HeaderSearch = styled.div`
 flex: 0.4; 
 opacity: 1;
 border-radius: 6px;
@@ -55,7 +35,7 @@ border: 1px gray solid;
 `;
 
 
-const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div`
     display: flex;
     position: fixed;
     width: 100%;
@@ -66,13 +46,13 @@ const HeaderContainer = styled.div`
     color:white; 
 `;
 
-const HeaderLeft = styled.div`
+export const HeaderLeft = styled.div`
 flex: 0.3; 
 display: flex; 
 align-items: center;
 margin-left: 20px; 
 `;
-const HeaderAvatar = styled(Avatar)`
+export const HeaderAvatar = styled(Avatar)`
 cursor: pointer; 
 
 :hover {
@@ -80,7 +60,7 @@ cursor: pointer;
 }
 `;
 
-const HeaderTimeIcon = styled(AccessTime)`
+export const HeaderTimeIcon = styled(AccessTime)`
 margin-left: auto;
 margin-right: 30px; 
 `;
