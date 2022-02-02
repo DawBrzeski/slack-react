@@ -20,10 +20,10 @@ function Chat() {
     )
 
     useEffect(() => {
-        chatRef?.current?.scrollIntoView();
+        chatRef?.current?.scrollIntoView({
+            behavior: "smooth",
+        });
     }, [roomId, loading])
-
-
 
 
     return (
@@ -61,6 +61,7 @@ function Chat() {
                 </ChatMessages>
 
                 <ChatInput
+                    chatRef={chatRef}
                     channelId={roomId}
                     channelName={roomDetails?.data().name}
                 />
